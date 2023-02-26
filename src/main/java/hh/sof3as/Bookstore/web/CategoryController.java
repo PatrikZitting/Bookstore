@@ -14,11 +14,11 @@ import hh.sof3as.Bookstore.domain.CategoryRepository;
 
 public class CategoryController {
 	@Autowired
-	private CategoryRepository repository;
+	private CategoryRepository crepository;
 	
 	@RequestMapping(value="/categorylist")
 	public String categoryList(Model model) {
-		model.addAttribute("categories", repository.findAll());
+		model.addAttribute("categories", crepository.findAll());
 		return "categorylist";
 	}
 	
@@ -30,7 +30,7 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
     public String saveCategory(Category category){
-        repository.save(category);
+        crepository.save(category);
         return "redirect:categorylist";
     }
 }
