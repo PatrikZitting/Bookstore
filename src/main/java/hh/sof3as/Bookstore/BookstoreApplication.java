@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import hh.sof3as.Bookstore.domain.Book;
 import hh.sof3as.Bookstore.domain.BookRepository;
+import hh.sof3as.Bookstore.domain.Category;
+import hh.sof3as.Bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,6 +24,17 @@ public class BookstoreApplication {
 			
 			repository.save(b1);
 			repository.save(b2);
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner demo2(CategoryRepository repository) {
+		return (args) -> {
+			Category c1 = new Category("Philosophy");
+			Category c2 = new Category("Fiction");
+			
+			repository.save(c1);
+			repository.save(c2);
 		};
 	}
 
